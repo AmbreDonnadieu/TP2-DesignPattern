@@ -20,8 +20,12 @@ namespace TP2_Code
 
             bool existance = File.Exists(pathJson);
 
-            Console.WriteLine(existance);
+            //string text = System.IO.File.ReadAllText("Jsontest.json");
 
+            // Display the file contents to the console. Variable text is a string.
+            //System.Console.WriteLine("Contents of WriteText.txt = {0}", text);
+
+            Console.WriteLine(existance);
 
             Console.ReadKey();
 
