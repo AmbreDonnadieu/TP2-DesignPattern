@@ -10,18 +10,32 @@ namespace TP2_Code
         //note : le fichier json utilisé pour les tests du projet a été pris du site suivant :
         // https://support.oneskyapp.com/hc/en-us/articles/208047697-JSON-sample-files
 
-        Dictionary<string, Object> DicoFinal = new Dictionary<string, object>();
+        static Dictionary<string, Object> DicoFinal = new Dictionary<string, object>();
 
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-
-            string pathJson = "Jsontest.json";
-
-            bool existance = File.Exists(pathJson);
-
+            bool existance = File.Exists("Jsontest.json");
+            
             Console.WriteLine(existance);
 
+
+            //lire le json ici
+            string typeJson = new string("pomme");
+            char[] chars = new char[] { 'm', 'a', 'm', 'a' };
+            object json = Activator.CreateInstance(typeJson.GetType(), new Object[] { chars} ) ;
+            
+            
+            Console.WriteLine(json.GetType().ToString() +" : " + json.ToString());
+
+
+            object Poire = new object();
+            Poire = "poire";
+            DicoFinal.Add("fruit", Poire);
+            foreach(KeyValuePair<string, object> obj in DicoFinal)
+            {
+                Console.WriteLine(obj.Key + " : " + obj.Value);
+            }
 
             Console.ReadKey();
 
