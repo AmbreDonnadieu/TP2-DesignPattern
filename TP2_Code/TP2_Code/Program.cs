@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+
 
 namespace TP2_Code
 {
@@ -13,6 +15,16 @@ namespace TP2_Code
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            string pathJson = "Jsontest.json";
+
+            bool existance = File.Exists(pathJson);
+
+            Console.WriteLine(existance);
+
+
+            Console.ReadKey();
+
         }
 
 
