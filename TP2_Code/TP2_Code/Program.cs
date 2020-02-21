@@ -41,6 +41,15 @@ namespace TP2_Code
 
         }
 
+        class Chat
+        {
+            string nom;
+            int age;
+            string race;
+            enum CouleursYeux{ Bleu, Jaune, marron, vert};
+            enum TypePoil {  Long, court, ras};
+            List<DateTime> DatesVaccination;
+        }
 
         //JSONSerialize(jsonfile)
         // 1- récupère tous les json objects simple (int, char etc + string)
