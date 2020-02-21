@@ -6,19 +6,26 @@ using System.IO;
 namespace TP2_Code
 {
     class Program
-    {
-        //note : le fichier json utilisé pour les tests du projet a été pris du site suivant :
+    {//note : le fichier json utilisé pour les tests du projet a été pris du site suivant :
         // https://support.oneskyapp.com/hc/en-us/articles/208047697-JSON-sample-files
 
-        //static Dictionary<string, Object> DicoFinal = new Dictionary<string, object>();
+        static Dictionary<string, Object> DicoFinal = new Dictionary<string, object>();
 
         static void Main(string[] args)
         {
-            Console.WriteLine("test");
+            Console.WriteLine("Hello World!");
+
+            List<DateTime> datesTest = new List<DateTime>();
+            datesTest.Add(new DateTime(2019, 10, 31));
+
+            Chat miaou = new Chat("Marie", 1, "Angorra", Chat.CouleursYeux.Bleu, Chat.TypePoil.Long, datesTest);
+
+
 
             Console.ReadKey();
+
         }
-    
+
         class Chat
         {
             public enum CouleursYeux { Bleu, Jaune, marron, vert };
@@ -31,11 +38,11 @@ namespace TP2_Code
             public TypePoil poilchat;
             List<DateTime> DatesVaccination;
 
-            public string Nom { get { return nom; } }  
-            public int Age { get { return age; } }  
-            public string Race { get { return race; } }  
-            public CouleursYeux Yeux { get { return yeuxchat; } }  
-            public TypePoil Poil { get { return poilchat; } }    
+            public string Nom { get { return nom; } }
+            public int Age { get { return age; } }
+            public string Race { get { return race; } }
+            public CouleursYeux Yeux { get { return yeuxchat; } }
+            public TypePoil Poil { get { return poilchat; } }
             List<DateTime> Vaccin { get { return DatesVaccination; } }
 
             public Chat(string nom, int age, string race, CouleursYeux yeux, TypePoil poil, List<DateTime> Vaccination)
@@ -48,6 +55,7 @@ namespace TP2_Code
             }
 
         }
-        
+
+
     }
 }
