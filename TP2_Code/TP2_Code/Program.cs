@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-
+using System.Reflection;
 
 namespace TP2_Code
 {
@@ -12,8 +12,8 @@ namespace TP2_Code
 
         static void Main(string[] args)
         {
+
             MyJson DicoFinal = new MyJson();
-            //DicoFinal.
 
             Console.WriteLine("Hello World!");
 
@@ -21,6 +21,14 @@ namespace TP2_Code
             datesTest.Add(new DateTime(2019, 10, 31));
 
             Chat miaou = new Chat("Marie", 1, "Angorra", Chat.CouleursYeux.Bleu, Chat.TypePoil.Long, datesTest);
+
+            DicoFinal.Add("test", miaou);
+
+            DicoFinal.JsonSerialize(miaou);
+
+            Console.WriteLine("Clé : nom, Valeur : {0}", DicoFinal["nom"]);
+
+          
 
             //DicoFinal.JsonSerialize();
 
@@ -38,7 +46,25 @@ namespace TP2_Code
             }
             public void JsonSerialize(object a)
             {
+                Type leType = a.GetType();
+                FieldInfo[] myFieldInfo;
+                myFieldInfo = leType.GetFields(BindingFlags.NonPublic | BindingFlags.Instance
+            | BindingFlags.Public);
 
+                Console.WriteLine("\nThe fields of " +
+            "FieldInfoClass are \n");
+
+                for (int i = 0; i < myFieldInfo.Length; i++)
+                {
+                    Console.WriteLine("\nName            : {0}", myFieldInfo[i].Name);
+                    Console.WriteLine("Declaring Type  : {0}", myFieldInfo[i].DeclaringType);
+                    Console.WriteLine("IsPublic        : {0}", myFieldInfo[i].IsPublic);
+                    Console.WriteLine("MemberType      : {0}", myFieldInfo[i].MemberType);
+                    Console.WriteLine("FieldType       : {0}", myFieldInfo[i].FieldType);
+                    Console.WriteLine("IsFamily        : {0}", myFieldInfo[i].IsFamily);
+                }
+
+                this.Add(myFieldInfo[0].Name, myFieldInfo[0].FieldType);
             }
             
         }
