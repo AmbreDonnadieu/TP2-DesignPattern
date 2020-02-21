@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-
+using System.Reflection;
 
 namespace TP2_Code
 {
@@ -14,18 +14,35 @@ namespace TP2_Code
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
 
-            string pathJson = "Jsontest.json";
+            string pathJson = "C:/Users/THEO/Documents/UQAC/Developpement/example_2.json";
 
             bool existance = File.Exists(pathJson);
 
-            //string text = System.IO.File.ReadAllText("Jsontest.json");
+            string text = System.IO.File.ReadAllText(pathJson);
+
+            System.IO.File.Open(pathJson,FileMode.Open);
 
             // Display the file contents to the console. Variable text is a string.
-            //System.Console.WriteLine("Contents of WriteText.txt = {0}", text);
+            System.Console.WriteLine("Contents of WriteText.txt = {0}", text);
 
-            Console.WriteLine(existance);
+            FieldInfo[] myFieldInfo;
+            Type myType = typeof(test);
+
+            myFieldInfo = myType.GetFields(BindingFlags.NonPublic | BindingFlags.Instance
+            | BindingFlags.Public);
+            Console.WriteLine("\nThe fields of " +
+                "FieldInfoClass are \n");
+            // Display the field information of FieldInfoClass.
+            for (int i = 0; i < myFieldInfo.Length; i++)
+            {
+                Console.WriteLine("\nName            : {0}", myFieldInfo[i].Name);
+                Console.WriteLine("Declaring Type  : {0}", myFieldInfo[i].DeclaringType);
+                Console.WriteLine("IsPublic        : {0}", myFieldInfo[i].IsPublic);
+                Console.WriteLine("MemberType      : {0}", myFieldInfo[i].MemberType);
+                Console.WriteLine("FieldType       : {0}", myFieldInfo[i].FieldType);
+                Console.WriteLine("IsFamily        : {0}", myFieldInfo[i].IsFamily);
+            }
 
             Console.ReadKey();
 
