@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 
 namespace TP2_Code
@@ -13,34 +15,39 @@ namespace TP2_Code
         static void Main(string[] args)
         {
             Console.WriteLine("test");
-            /*FieldInfo[] myFieldInfo;
-            Type myType = typeof(test);
 
-            myFieldInfo = myType.GetFields(BindingFlags.NonPublic | BindingFlags.Instance
-            | BindingFlags.Public);
-            Console.WriteLine("\nThe fields of " +
-                "FieldInfoClass are \n");
-            // Display the field information of FieldInfoClass.
-            for (int i = 0; i < myFieldInfo.Length; i++)
-            {
-                Console.WriteLine("\nName            : {0}", myFieldInfo[i].Name);
-                Console.WriteLine("Declaring Type  : {0}", myFieldInfo[i].DeclaringType);
-                Console.WriteLine("IsPublic        : {0}", myFieldInfo[i].IsPublic);
-                Console.WriteLine("MemberType      : {0}", myFieldInfo[i].MemberType);
-                Console.WriteLine("FieldType       : {0}", myFieldInfo[i].FieldType);
-                Console.WriteLine("IsFamily        : {0}", myFieldInfo[i].IsFamily);
-
-            }*/
+            Console.ReadKey();
         }
+    
+        class Chat
+        {
+            public enum CouleursYeux { Bleu, Jaune, marron, vert };
+            public enum TypePoil { Long, court, ras };
 
-        //JSONSerialize(jsonfile)
-        // 1- récupère tous les json objects simple (int, char etc + string)
-        // 2- récupère les membres privés 
-        // 3- récupère les sous-objets sauf tableaux et IEnumarable
-        // 4- récupère les tableaux et IEnumerable
+            public string nom;
+            public int age;
+            public string race;
+            public CouleursYeux yeuxchat;
+            public TypePoil poilchat;
+            List<DateTime> DatesVaccination;
 
-        // a- parcourir le fichier json comme un arbre
-        // b- à chaque noeud, tu checks les conditions ci-dessus pour voir si tu l'ajoutes au dico ou non
-        //en gros, on veut convertir un fichier json en dictionary <string, object>
+            public string Nom { get { return nom; } }  
+            public int Age { get { return age; } }  
+            public string Race { get { return race; } }  
+            public CouleursYeux Yeux { get { return yeuxchat; } }  
+            public TypePoil Poil { get { return poilchat; } }    
+            List<DateTime> Vaccin { get { return DatesVaccination; } }
+
+            public Chat(string nom, int age, string race, CouleursYeux yeux, TypePoil poil, List<DateTime> Vaccination)
+            {
+                this.nom = nom;
+                this.race = race;
+                yeuxchat = yeux;
+                poilchat = poil;
+                DatesVaccination = Vaccination;
+            }
+
+        }
+        
     }
 }
