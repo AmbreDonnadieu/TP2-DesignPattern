@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
+
 
 namespace TP2_Code
 {
@@ -10,23 +8,12 @@ namespace TP2_Code
         //note : le fichier json utilisé pour les tests du projet a été pris du site suivant :
         // https://support.oneskyapp.com/hc/en-us/articles/208047697-JSON-sample-files
 
-        Dictionary<string, Object> DicoFinal = new Dictionary<string, object>();
+        //static Dictionary<string, Object> DicoFinal = new Dictionary<string, object>();
 
         static void Main(string[] args)
         {
-
-            string pathJson = "C:/Users/THEO/Documents/UQAC/Developpement/example_2.json";
-
-            bool existance = File.Exists(pathJson);
-
-            string text = System.IO.File.ReadAllText(pathJson);
-
-            System.IO.File.Open(pathJson,FileMode.Open);
-
-            // Display the file contents to the console. Variable text is a string.
-            System.Console.WriteLine("Contents of WriteText.txt = {0}", text);
-
-            FieldInfo[] myFieldInfo;
+            Console.WriteLine("test");
+            /*FieldInfo[] myFieldInfo;
             Type myType = typeof(test);
 
             myFieldInfo = myType.GetFields(BindingFlags.NonPublic | BindingFlags.Instance
@@ -42,12 +29,9 @@ namespace TP2_Code
                 Console.WriteLine("MemberType      : {0}", myFieldInfo[i].MemberType);
                 Console.WriteLine("FieldType       : {0}", myFieldInfo[i].FieldType);
                 Console.WriteLine("IsFamily        : {0}", myFieldInfo[i].IsFamily);
-            }
 
-            Console.ReadKey();
-
+            }*/
         }
-
 
         //JSONSerialize(jsonfile)
         // 1- récupère tous les json objects simple (int, char etc + string)
