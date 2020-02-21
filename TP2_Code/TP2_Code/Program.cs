@@ -13,9 +13,7 @@ namespace TP2_Code
         static void Main(string[] args)
         {
             Dictionary<string, object> DicoFinal = new MyJson();
-
-            MyJson DicoFinal = new MyJson();
-
+            
             Console.WriteLine("Hello World!");
 
             List<DateTime> datesTest = new List<DateTime>();
@@ -24,11 +22,9 @@ namespace TP2_Code
             Animal Bleriot = new Chat("Marie","Angorra", Chat.CouleursYeux.Bleu, Chat.TypePoil.Long, datesTest);
             Console.WriteLine(Bleriot.age);
             Bleriot.age = 1;
+            
 
-
-            DicoFinal.Add("test", miaou);
-
-            DicoFinal.JsonSerialize(miaou);
+            //DicoFinal.JsonSerialize(miaou);
 
             Console.WriteLine("Clé : nom, Valeur : {0}", DicoFinal["nom"]);
 
