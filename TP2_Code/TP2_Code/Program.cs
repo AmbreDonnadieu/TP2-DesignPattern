@@ -26,7 +26,7 @@ namespace TP2_Code
 
             //DicoFinal.JsonSerialize(miaou);
 
-            Console.WriteLine("Clé : nom, Valeur : {0}", DicoFinal["nom"]);
+            //Console.WriteLine("Clé : nom, Valeur : {0}", DicoFinal["nom"]);
 
           
 
