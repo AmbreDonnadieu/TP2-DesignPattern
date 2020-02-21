@@ -9,10 +9,12 @@ namespace TP2_Code
     {//note : le fichier json utilisé pour les tests du projet a été pris du site suivant :
         // https://support.oneskyapp.com/hc/en-us/articles/208047697-JSON-sample-files
 
-        static Dictionary<string, Object> DicoFinal = new Dictionary<string, object>();
 
         static void Main(string[] args)
         {
+            MyJson DicoFinal = new MyJson();
+            //DicoFinal.
+
             Console.WriteLine("Hello World!");
 
             List<DateTime> datesTest = new List<DateTime>();
@@ -20,10 +22,25 @@ namespace TP2_Code
 
             Chat miaou = new Chat("Marie", 1, "Angorra", Chat.CouleursYeux.Bleu, Chat.TypePoil.Long, datesTest);
 
+            //DicoFinal.JsonSerialize();
 
 
             Console.ReadKey();
 
+        }
+
+        public class MyJson : Dictionary<string, object>
+        {
+
+            public MyJson(): base (new Dictionary<string, object>())
+            {
+
+            }
+            public void JsonSerialize(object a)
+            {
+
+            }
+            
         }
 
         class Chat
