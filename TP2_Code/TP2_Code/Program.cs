@@ -6,10 +6,7 @@ using System.Reflection;
 namespace TP2_Code
 {
     class Program
-    {//note : le fichier json utilisé pour les tests du projet a été pris du site suivant :
-        // https://support.oneskyapp.com/hc/en-us/articles/208047697-JSON-sample-files
-
-
+    {
         static void Main(string[] args)
         {
             Dictionary<string, object> DicoFinal = new MyJson();
