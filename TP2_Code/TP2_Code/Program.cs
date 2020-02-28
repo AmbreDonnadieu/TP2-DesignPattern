@@ -9,6 +9,15 @@ namespace TP2_Code
     {
         static void Main(string[] args)
         {
+            //exo1();
+            exo2();
+
+            Console.ReadKey();
+
+        }
+
+        static void exo1()
+        {
             Dictionary<string, object> DicoFinal = new MyJson();
 
             Console.WriteLine("Hello World!");
@@ -21,15 +30,11 @@ namespace TP2_Code
             Bleriot.age = 1;
 
             //DicoFinal.Add("chat1",Bleriot);
-            
+
 
             //Console.WriteLine(DicoFinal["chat1"].ToString() );
             //(DicoFinal as MyJson).JsonSerialize(Bleriot);
-
-            Console.ReadKey();
-
         }
-
 
         public class MyJson : Dictionary<string, object>
         {
@@ -74,7 +79,6 @@ namespace TP2_Code
             
         }
 
-
         public class Animal
         {
             public int age;
@@ -115,6 +119,11 @@ namespace TP2_Code
             }
         }
 
+
+        static void exo2()
+        {
+
+        }
 
     }
 }
