@@ -10,31 +10,26 @@ namespace TP2_Code
         static void Main(string[] args)
         {
             Dictionary<string, object> DicoFinal = new MyJson();
-            
+
             Console.WriteLine("Hello World!");
 
             List<DateTime> datesTest = new List<DateTime>();
             datesTest.Add(new DateTime(2019, 10, 31));
-            
-            Animal Bleriot = new Chat("Marie","Angorra", Chat.CouleursYeux.Bleu, Chat.TypePoil.Long, datesTest);
+
+            Animal Bleriot = new Chat("Marie", "Angorra", Chat.CouleursYeux.Bleu, Chat.TypePoil.Long, datesTest);
             Console.WriteLine(Bleriot.age);
             Bleriot.age = 1;
+
+            //DicoFinal.Add("chat1",Bleriot);
             
 
-            //DicoFinal.JsonSerialize(miaou);
-
-            //Console.WriteLine("Clé : nom, Valeur : {0}", DicoFinal["nom"]);
-
-          
-
-            //DicoFinal.JsonSerialize();
-            DicoFinal.Add("chat1",Bleriot);
-
-            Console.WriteLine(DicoFinal["chat1"].ToString() );
+            //Console.WriteLine(DicoFinal["chat1"].ToString() );
+            //(DicoFinal as MyJson).JsonSerialize(Bleriot);
 
             Console.ReadKey();
 
         }
+
 
         public class MyJson : Dictionary<string, object>
         {
@@ -46,24 +41,35 @@ namespace TP2_Code
             public void JsonSerialize(object a)
             {
                 Type leType = a.GetType();
-                FieldInfo[] myFieldInfo;
-                myFieldInfo = leType.GetFields(BindingFlags.NonPublic | BindingFlags.Instance
-            | BindingFlags.Public);
-
-                Console.WriteLine("\nThe fields of " +
-            "FieldInfoClass are \n");
-
-                for (int i = 0; i < myFieldInfo.Length; i++)
+                FieldInfo[] myFieldInfo = leType.GetFields(BindingFlags.NonPublic | BindingFlags.Instance| BindingFlags.Public);
+                
+                for(int i = 0; i<myFieldInfo.Length; i++)
                 {
-                    Console.WriteLine("\nName            : {0}", myFieldInfo[i].Name);
-                    Console.WriteLine("Declaring Type  : {0}", myFieldInfo[i].DeclaringType);
-                    Console.WriteLine("IsPublic        : {0}", myFieldInfo[i].IsPublic);
-                    Console.WriteLine("MemberType      : {0}", myFieldInfo[i].MemberType);
-                    Console.WriteLine("FieldType       : {0}", myFieldInfo[i].FieldType);
-                    Console.WriteLine("IsFamily        : {0}", myFieldInfo[i].IsFamily);
-                }
+                    if (myFieldInfo[i].IsPublic)
+                    {
+                        this.Add(myFieldInfo[i].Name, myFieldInfo[i].FieldType);
+                    }
+                    else
+                    {
+                        if(myFieldInfo[i].IsPrivate)
+                        {
+                            this.Add(myFieldInfo[i].Name, myFieldInfo[i].FieldType);
+                        }
+                        else
+                        {
+                            Type b = myFieldInfo[i].GetType();
+                            if (b is System.Collections.IEnumerable || b is System.Array)
+                            {
+                                this.Add(myFieldInfo[i].Name, myFieldInfo[i].FieldType);
+                            }
+                        }
+                    }
 
-                this.Add(myFieldInfo[0].Name, myFieldInfo[0].FieldType);
+                }
+                myFieldInfo.ToString();
+                
+
+                //this.Add(myFieldInfo[0].Name, myFieldInfo[0].FieldType);
             }
             
         }
