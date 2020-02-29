@@ -58,33 +58,38 @@ namespace TP2_Code
             Type leType = a.GetType();
             FieldInfo[] myFieldInfo = leType.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
 
+            // On ajoute les informations de type primitif (int, char, string, etc...)
             for (int i = 0; i < myFieldInfo.Length; i++)
             {
-                if (myFieldInfo[i].IsPublic)
+                if (myFieldInfo[i].FieldType.IsPrimitive
+                    && (myFieldInfo[i].IsPublic || myFieldInfo[i].IsPrivate))
                 {
-                    this.Add(myFieldInfo[i].Name, myFieldInfo[i].FieldType);
-                }
-                else
-                {
-                    if (myFieldInfo[i].IsPrivate)
-                    {
-                        this.Add(myFieldInfo[i].Name, myFieldInfo[i].FieldType);
-                    }
-                    else
-                    {
-                        Type b = myFieldInfo[i].GetType();
-                        if (b is System.Collections.IEnumerable || b is Array)
-                        {
-                            this.Add(myFieldInfo[i].Name, myFieldInfo[i].FieldType);
-                        }
-                    }
+                    Add(myFieldInfo[i].Name, myFieldInfo[i].Attributes);
                 }
 
             }
-            myFieldInfo.ToString();
+            //On ajoute les informations de type objet qui ne sont ni primitif ni IEnumerable/tableau
+            for (int i = 0; i < myFieldInfo.Length; i++)
+            {
+                if (!myFieldInfo[i].FieldType.IsPrimitive
+                    && !(myFieldInfo[i].FieldType is System.Collections.IEnumerable || myFieldInfo[i].FieldType is Array)
+                    && (myFieldInfo[i].IsPublic || myFieldInfo[i].IsPrivate))
+                {
+                    Add(myFieldInfo[i].Name, myFieldInfo[i]);
+                }
+            }
 
+            // On ajoute les informations de type IEnumerable ou sous forme de tableau
+            for (int i = 0; i < myFieldInfo.Length; i++)
+            {
+                if (myFieldInfo[i].FieldType is System.Collections.IEnumerable
+                    || myFieldInfo[i].FieldType is Array
+                    && (myFieldInfo[i].IsPublic || myFieldInfo[i].IsPrivate))
+                {
+                    Add(myFieldInfo[i].Name, myFieldInfo[i]);
+                }
+            }
 
-            //this.Add(myFieldInfo[0].Name, myFieldInfo[0].FieldType);
         }
 
     }

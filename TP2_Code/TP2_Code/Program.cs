@@ -9,8 +9,8 @@ namespace TP2_Code
     {
         static void Main(string[] args)
         {
-            //Exo1();
-            Exo2();
+            Exo1();
+            //Exo2();
 
             Console.ReadKey();
 
@@ -29,11 +29,13 @@ namespace TP2_Code
             Console.WriteLine(Bleriot.age);
             Bleriot.age = 1;
 
-            //DicoFinal.Add("chat1",Bleriot);
+            (DicoFinal as MyJson).JsonSerialize(Bleriot);
 
-
-            //Console.WriteLine(DicoFinal["chat1"].ToString() );
-            //(DicoFinal as MyJson).JsonSerialize(Bleriot);
+            foreach(KeyValuePair<string, object> key in DicoFinal)
+            {
+                Console.Write(key.Key.ToString() + " : " + key.Value.ToString() + "\n");
+            }
+            
         }
 
         static void Exo2()
