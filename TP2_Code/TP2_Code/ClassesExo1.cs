@@ -64,7 +64,7 @@ namespace TP2_Code
                 if (myFieldInfo[i].FieldType.IsPrimitive
                     && (myFieldInfo[i].IsPublic || myFieldInfo[i].IsPrivate))
                 {
-                    Add(myFieldInfo[i].Name, myFieldInfo[i].Attributes);
+                    Add(myFieldInfo[i].Name, myFieldInfo[i].GetValue(a));
                 }
 
             }
@@ -75,18 +75,19 @@ namespace TP2_Code
                     && !(myFieldInfo[i].FieldType is System.Collections.IEnumerable || myFieldInfo[i].FieldType is Array)
                     && (myFieldInfo[i].IsPublic || myFieldInfo[i].IsPrivate))
                 {
-                    Add(myFieldInfo[i].Name, myFieldInfo[i]);
+                    Add(myFieldInfo[i].Name, myFieldInfo[i].GetValue(a));
                 }
             }
 
             // On ajoute les informations de type IEnumerable ou sous forme de tableau
             for (int i = 0; i < myFieldInfo.Length; i++)
             {
-                if (myFieldInfo[i].FieldType is System.Collections.IEnumerable
-                    || myFieldInfo[i].FieldType is Array
+                if ((myFieldInfo[i].FieldType is System.Collections.IEnumerable
+                    || myFieldInfo[i].FieldType is Array)
                     && (myFieldInfo[i].IsPublic || myFieldInfo[i].IsPrivate))
                 {
-                    Add(myFieldInfo[i].Name, myFieldInfo[i]);
+                    var test = myFieldInfo[i].GetValue(a);
+                    Add(myFieldInfo[i].Name, myFieldInfo[i].GetValue(a));
                 }
             }
 
