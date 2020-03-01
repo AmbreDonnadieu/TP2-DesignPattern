@@ -38,13 +38,15 @@ namespace TP2_Code
 
         private void Sense()
         {
-            while (true)
+            int j = 0;
+            while (j < 10)
             {
                 foreach (Sensor i in Capteurs)
                 {
                     i.updateSensor();
                     Thread.Sleep(1000);
                 }
+                j++;
             }
         }
     }

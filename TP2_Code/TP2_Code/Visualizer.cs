@@ -23,6 +23,7 @@ namespace TP2_Code
                 Console.WriteLine(test);
 
             }
+            Console.WriteLine("Capteur : " + capteur.SensorID + "Valeur : " + capteur.SensorValue);
         }
     }
 }

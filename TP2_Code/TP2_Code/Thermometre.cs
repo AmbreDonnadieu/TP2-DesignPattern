@@ -8,7 +8,7 @@ namespace TP2_Code
     {
         System.Random rand = new Random();
 
-        public string SensorID { get { return SensorID; } set { } }
+        public string SensorID { get { return new string(""); } set { } }
 
         public enum Unite {celsius, fahrenheit };
 

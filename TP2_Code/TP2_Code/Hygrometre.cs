@@ -7,7 +7,7 @@ namespace TP2_Code
     class Hygrometre : Sensor
     {
         System.Random rand = new Random();
-        public string SensorID { get {return SensorID; } set { } }
+        public string SensorID { get { return new string(""); } set { } }
 
         public enum Unite { pourcentage, gBym3 };
 
@@ -24,6 +24,7 @@ namespace TP2_Code
             set
             { }
         }
+
 
         public Hygrometre(string name, Unite unite)
         {
