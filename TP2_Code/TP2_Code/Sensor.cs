@@ -9,6 +9,8 @@ namespace TP2_Code
 
         string SensorID { get; set; }
         double SensorValue { get; set; }
-        
+
+        void updateSensor();
+
     }
 }
