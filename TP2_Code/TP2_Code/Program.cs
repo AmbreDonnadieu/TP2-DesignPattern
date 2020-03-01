@@ -48,7 +48,6 @@ namespace TP2_Code
             sd.updateSensorValues();
             Visualizer vs = new Visualizer();
             vs.ShowSensor(th);
-            Console.WriteLine("coucou \n");
 
         }
 

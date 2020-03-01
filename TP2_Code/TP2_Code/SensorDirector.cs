@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace TP2_Code
 {
@@ -18,9 +19,9 @@ namespace TP2_Code
 
         public Sensor deleteSensor(string id)
         {
-            foreach(Sensor i in Capteurs)
+            foreach (Sensor i in Capteurs)
             {
-                if(i.SensorID == id)
+                if (i.SensorID == id)
                 {
                     Capteurs.Remove(i);
                     return i;
@@ -31,10 +32,19 @@ namespace TP2_Code
 
         public void updateSensorValues()
         {
-            var rand = new Random();
-            foreach(Sensor i in Capteurs)
+            Thread thread = new Thread(Sense);
+            thread.Start();
+        }
+
+        private void Sense()
+        {
+            while (true)
             {
-                i.updateSensor();
+                foreach (Sensor i in Capteurs)
+                {
+                    i.updateSensor();
+                    Thread.Sleep(1000);
+                }
             }
         }
     }
