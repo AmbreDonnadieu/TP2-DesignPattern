@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace TP2_Code
@@ -10,7 +11,18 @@ namespace TP2_Code
 
         public void ShowSensor(Sensor capteur)
         {
-            double a = capteur.SensorValue;
+            Object a = capteur;
+            Type leType = capteur.GetType();
+            FieldInfo[] myFieldInfo = leType.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
+
+            for (int i = 0; i < myFieldInfo.Length; i++)
+            {
+                var test = myFieldInfo[i].GetValue(a);
+                string t = myFieldInfo[i].Name;
+                Console.WriteLine(t);
+                Console.WriteLine(test);
+
+            }
         }
     }
 }

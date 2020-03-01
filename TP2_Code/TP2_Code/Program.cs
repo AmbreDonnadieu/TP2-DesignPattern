@@ -10,7 +10,7 @@ namespace TP2_Code
         static void Main(string[] args)
         {
             Exo1();
-            //Exo2();
+            Exo2();
 
             Console.ReadKey();
 
@@ -40,6 +40,15 @@ namespace TP2_Code
 
         static void Exo2()
         {
+            Thermometre th = new Thermometre("th1", Thermometre.Unite.celsius);
+            Hygrometre hy = new Hygrometre("hy1", Hygrometre.Unite.pourcentage);
+            SensorDirector sd = new SensorDirector();
+            sd.addSensor(th);
+            sd.addSensor(hy);
+            sd.updateSensorValues();
+            Visualizer vs = new Visualizer();
+            vs.ShowSensor(th);
+            Console.WriteLine("coucou \n");
 
         }
 

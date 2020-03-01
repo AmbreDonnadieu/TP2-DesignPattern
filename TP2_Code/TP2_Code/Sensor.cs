@@ -7,7 +7,7 @@ namespace TP2_Code
     public interface Sensor
     {
 
-        string SensorID { get; set; }
+        string SensorID { get; set;  }
         double SensorValue { get; set; }
 
         void updateSensor();
