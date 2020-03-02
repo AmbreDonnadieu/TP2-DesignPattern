@@ -12,7 +12,7 @@
 
 ## Exercice 2 
 Pour cet exercice, nous avons fait le diagramme UML suivant :
-![Diagramme de classe UML](UML.jpg)
+![Diagramme de classe UML](UML2.jpg)
 
 On a donc utilisé le design Pattern Builder pour toute la partie création de capteur et gestion de ceux-ci. Au début, nous sommes partie sur le desing pattern Abstract Factory, pattern qui a ensuite été modifié pour devenir un builder.
 
