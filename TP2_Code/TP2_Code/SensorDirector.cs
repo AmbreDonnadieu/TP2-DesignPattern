@@ -8,7 +8,7 @@ namespace TP2_Code
 {
     class SensorDirector
     {
-        private ArrayList Capteurs = new ArrayList();
+        public ArrayList Capteurs = new ArrayList();
 
         public SensorDirector() { }
 
@@ -17,17 +17,16 @@ namespace TP2_Code
             Capteurs.Add(entree);
         }
 
-        public Sensor deleteSensor(string id)
+        public void deleteSensor(string id)
         {
             foreach (Sensor i in Capteurs)
             {
                 if (i.SensorID == id)
                 {
                     Capteurs.Remove(i);
-                    return i;
                 }
             }
-            return null;
+            Console.WriteLine("Le capteur " + id + " a bien été supprimé.");
         }
 
         public void updateSensorValues()

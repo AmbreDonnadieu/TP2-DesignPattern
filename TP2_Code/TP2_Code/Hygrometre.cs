@@ -7,36 +7,33 @@ namespace TP2_Code
     class Hygrometre : Sensor
     {
         System.Random rand = new Random();
-        public string SensorID { get { return new string(""); } set { } }
+        public string SensorID { get; set; }
+        public double SensorValue { get; set; }
+        public Unite SensorUnity { get; set; }
+        public TypeCapteur typeCapteur { get; set; }
 
-        public enum Unite { pourcentage, gBym3 };
-
-        public enum Type { humidite };
-        public Unite UniteMesure { get { return UniteMesure; } set { } }
-        public Type TypeMesure { get { return TypeMesure; } set { } }
-
-        public double SensorValue
-        {
-            get
-            {
-                return new double();
-            }
-            set
-            { }
-        }
+        TypeCapteur Capteurtype = TypeCapteur.humidite;
+        
 
 
         public Hygrometre(string name, Unite unite)
         {
             SensorID = name;
-            UniteMesure = unite;
-            TypeMesure = Type.humidite;
+            SensorValue = 0;
+            SensorUnity = unite;
+            typeCapteur = TypeCapteur.humidite;
+
         }
 
         public void updateSensor()
         {
             var rand = new Random();
             SensorValue = rand.Next(101);
+        }
+
+        public override string ToString()
+        {
+            return "Capteur " + SensorID + " : " + SensorValue + " " + SensorUnity + ".";
         }
     }
 }

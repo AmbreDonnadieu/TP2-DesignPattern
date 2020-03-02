@@ -6,38 +6,30 @@ namespace TP2_Code
 {
     public class Thermometre : Sensor
     {
+        public string SensorID { get; set; }
+        public double SensorValue { get; set; }
+        public Unite SensorUnity { get; set; }
+        public TypeCapteur typeCapteur{ get; set; }
+
         System.Random rand = new Random();
-
-        public string SensorID { get { return new string(""); } set { } }
-
-        public enum Unite {celsius, fahrenheit };
-
-        public enum Type { temperature};
-        public Unite UniteMesure { get { return UniteMesure; } set { } }
-        public Type TypeMesure { get { return TypeMesure; } set { } }
-
-        public double SensorValue
-        {
-            get
-            {
-                return new double();
-            }
-            set
-            { }
-        }
-
+       
         public Thermometre(string id, Unite unite)
         {
             SensorID = id;
-            UniteMesure = unite;
-            TypeMesure = Type.temperature;
-
+            SensorUnity = unite;
+            SensorValue = 0;
+            typeCapteur = TypeCapteur.temperature;
         }
 
         public void updateSensor()
         {
             var rand = new Random();
             SensorValue = rand.Next(101);
+        }
+
+        public override string ToString()
+        {
+            return "Capteur " + SensorID + " : " + SensorValue + " " + SensorUnity + ".";
         }
     }
 }
