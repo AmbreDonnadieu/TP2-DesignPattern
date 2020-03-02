@@ -40,14 +40,14 @@ namespace TP2_Code
 
         static void Exo2()
         {
-            Thermometre th = new Thermometre("th1", Thermometre.Unite.celsius);
-            Hygrometre hy = new Hygrometre("hy1", Hygrometre.Unite.pourcentage);
+            Thermometre th = new Thermometre("th1", Unite.celsius);
+            Hygrometre hy = new Hygrometre("hy1", Unite.pourcentage);
             SensorDirector sd = new SensorDirector();
             sd.addSensor(th);
             sd.addSensor(hy);
             sd.updateSensorValues();
             Visualizer vs = new Visualizer();
-            vs.ShowSensor(th);
+            vs.ShowOneSensor(th);
 
         }
 
