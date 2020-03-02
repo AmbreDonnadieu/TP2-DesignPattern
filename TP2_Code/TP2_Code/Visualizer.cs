@@ -27,5 +27,15 @@ namespace TP2_Code
         {
             s.ToString();
         }
+        public void ShowOneSensor(string IDSensor)
+        {
+            foreach(Sensor s in SensorDirectorAll.Capteurs)
+            {
+                if(s.SensorID == IDSensor)
+                {
+                    s.ToString();
+                }
+            }
+        }
     }
 }
